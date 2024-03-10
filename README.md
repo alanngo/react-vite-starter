@@ -17,10 +17,78 @@
   }
 ```
 
-## Vite Components (using stock CSS)
+## Components 
+
+### Vite Components (using stock CSS)
 Located in ``src/components/vite``
 
 - Anchor
 - Button
 - Container
 - Text
+
+### Helper Components (using stock CSS)
+Located in ``src/components/``
+
+<b>RenderIf </b>=> conditional rendering in a component
+
+## Functions
+
+### Hooks
+
+#### useCount
+```ts
+const [count, increment, decrement, reset] = useCount() // default value is 0
+```
+
+#### useToggle
+```ts
+const [active, toggle] = useToggle() // default value is false
+```
+
+#### useArray
+```ts
+const {
+  arr,
+  pushBack,
+  pushFront,
+  insert, 
+  popBack,
+  popFront,
+  remove,
+  clear,
+  reset,
+  sort
+} = useArray<E>() // default value is blank array
+```
+
+
+### Regular Functions
+Located in ``src/helper/functions``
+
+- ``optionals`` avoid undefined/null errors by wrapping possibly undefined/null values in param and returning a default value
+  
+  - ``optional<E>`` => default value required
+  - ``optionalAny`` => default value required
+  - ``optionalObject`` => blank object
+  - ``optionalArray<E>`` => blank array
+  - ``optionalNumber`` => 1
+  - ``optionalBoolean`` => true
+  - ``optionalString`` => blank string
+
+- ``updateState<E>`` used for updating complex states through reducers via key-value setting
+
+- ``blankClick`` click events w/ no effect
+
+- ``sorting criteria`` used for sorting arrays
+
+  
+  ```ts
+  //ascending
+  arr.sort(ascending)
+
+  // descending
+  arr.sort(descending)
+  ```
+
+  

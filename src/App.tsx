@@ -3,28 +3,32 @@ import Anchor from './components/vite/Anchor'
 import Button from './components/vite/Button'
 import Container from './components/vite/Container'
 import Text from './components/vite/Text'
+import { ascending, descending } from './helper/functions'
 import { useArray, useCount } from './helper/functions/hooks'
 
 const App = (): JSX.Element => {
   const [count, decrement, increment, reset] = useCount()
-  const { arr: foods, pushBack, pushFront, insert, remove} = useArray<string>(["pizza"])
+  const { arr: foods, pushBack, pushFront, insert, remove, sort } = useArray<string>(["pizza"])
   return (
     <Container>
       <Text level={1}>{count}</Text>
       <Button onClick={() => decrement()}>-</Button>
       <Button onClick={reset}>RESET</Button>
       <Button onClick={() => increment()}>+</Button>
-      <br/>
+      <br />
       {
         foods.map((e, i) =>
         (
-          <h2 key={i}>{e} <Anchor href="#" onClick={() =>{remove(i)}}>X</Anchor></h2>
+          <h2 key={i}>{e} <Anchor href="#" onClick={() => { remove(i) }}>X</Anchor></h2>
         ))
       }
       <Button onClick={() => pushFront("cake")}>push back</Button>
       <Button onClick={() => pushBack("pie")}>push back</Button>
       <Button onClick={() => insert(1, "donut")}>Insert</Button>
-      <br/>
+      <Button onClick={() => sort(ascending)}>sort ascending</Button>
+      <Button onClick={() => sort(descending)}>sort descending</Button>
+
+      <br />
       <Anchor href='https://www.google.com'>Google</Anchor>
     </Container>
   )

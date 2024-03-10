@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Counter } from "../../types"
+import { Action, Counter, SortCriteria } from "../../types"
 
 
 export const useCount = (initial: number = 0): Counter => {
@@ -10,6 +10,11 @@ export const useCount = (initial: number = 0): Counter => {
         (n: number = 1): void => setCount(count + n), //increment
         (): void => setCount(initial) //reset
     ]
+}
+
+export const useToggle = (initValue: boolean = false): [boolean, Action] => {
+    const [state, setState] = useState<boolean>(initValue)
+    return [state, (): void => setState(!state)]
 }
 
 export const useArray = <E>(initial: E[] = []) => {
@@ -23,6 +28,7 @@ export const useArray = <E>(initial: E[] = []) => {
         popFront: () => setArr(arr.slice(1)),
         remove: (idx: number) => setArr(arr.filter((_, i) => i !== idx)),
         clear: () => setArr([]),
-        reset: () => setArr(initial)
+        reset: () => setArr(initial),
+        sort: (cb: SortCriteria<E>) => setArr([...arr].sort(cb))
     }
 }

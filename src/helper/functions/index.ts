@@ -1,5 +1,6 @@
 import { Optional, OptionalAny, OptionalArray, OptionalBoolean, OptionalNumber, OptionalObject, OptionalString } from "../types/optional";
 import { BLANK, EMPTY_ARRAY, EMPTY_OBJ } from "../constants";
+
 // optionals 
 export const optional = <T>(arg: Optional<T>, fallback: T): T => arg || fallback
 export const optionalAny = (arg: OptionalAny, fallback: any): any => optional(arg, fallback)
@@ -14,3 +15,7 @@ export const updateState = <T>(state: Optional<T>, key: string, value: any): Opt
 
 //other
 export const blankClick = (): void => { }
+
+// sorting criteria
+export const ascending = <E>(a: E, b: E): number => (a === b ? 0 : (a > b ? 1 : -1))
+export const descending = <E>(a: E, b: E): number => (a === b ? 0 : (a < b ? 1 : -1))
