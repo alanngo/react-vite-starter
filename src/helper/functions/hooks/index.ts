@@ -32,3 +32,5 @@ export const useArray = <E>(initial: E[] = []) => {
         sort: (cb: SortCriteria<E>) => setArr([...arr].sort(cb))
     }
 }
+
+export const useRandom = <E>(samples: E[]): E => samples[Math.floor(Math.random() * samples.length)]

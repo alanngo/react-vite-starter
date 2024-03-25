@@ -4,13 +4,16 @@ import Button from './components/vite/Button'
 import Container from './components/vite/Container'
 import Text from './components/vite/Text'
 import { ascending, descending } from './helper/functions'
-import { useArray, useCount } from './helper/functions/hooks'
+import { useArray, useCount, useRandom } from './helper/functions/hooks'
 
 const App = (): JSX.Element => {
+  const random = useRandom<string>(["gryffindor", "slytherin", "ravenclaw", "hufflepuff"])
+  console.log(random)
   const [count, decrement, increment, reset] = useCount()
   const { arr: foods, pushBack, pushFront, insert, remove, sort } = useArray<string>(["pizza"])
   return (
     <Container>
+      <h1>House: {random}</h1>
       <Text level={1}>{count}</Text>
       <Button onClick={() => decrement()}>-</Button>
       <Button onClick={reset}>RESET</Button>

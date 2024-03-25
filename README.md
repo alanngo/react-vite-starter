@@ -62,6 +62,12 @@ const {
 } = useArray<E>() // default value is blank array
 ```
 
+### useRandom
+
+```ts
+const rand = useRandom<string>(["msi", "asus", "gigabyte", "asrock"])
+```
+
 
 ### Regular Functions
 Located in ``src/helper/functions``
