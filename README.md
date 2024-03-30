@@ -30,8 +30,35 @@ Located in ``src/components/vite``
 ### Helper Components (using stock CSS)
 Located in ``src/components/``
 
-<b>RenderIf </b>=> conditional rendering in a component
+#### RenderIf
+```jsx
+// before
+  {
+    condition? <ComponentA/>: <ComponentB/>
+  }
+```
 
+```jsx
+// after
+<RenderIf condition={condition} fallback={<ComponentB/>}>
+  <ComponentA/>
+</RenderIf>
+```
+
+#### Break 
+
+```html
+<!-- before -->
+<br/>
+<br/>
+<br/>
+...
+```
+
+```jsx
+// after
+<Break num={3} />
+```
 ## Functions
 
 ### Hooks

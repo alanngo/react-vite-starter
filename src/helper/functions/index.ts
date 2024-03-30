@@ -13,9 +13,9 @@ export const optionalString = (arg: OptionalString, fallback: string = BLANK): s
 // update states
 export const updateState = <T>(state: Optional<T>, key: string, value: any): OptionalObject => (optionalObject({ ...state, [`${key}`]: value }))
 
-//other
-export const blankClick = (): void => { }
-
 // sorting criteria
 export const ascending = <E>(a: E, b: E): number => (a === b ? 0 : (a > b ? 1 : -1))
 export const descending = <E>(a: E, b: E): number => (a === b ? 0 : (a < b ? 1 : -1))
+
+//other
+export const blankClick = (): void => { }

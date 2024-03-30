@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Action, Counter, SortCriteria } from "../../types"
 
 
@@ -33,4 +33,17 @@ export const useArray = <E>(initial: E[] = []) => {
     }
 }
 
-export const useRandom = <E>(samples: E[]): E => samples[Math.floor(Math.random() * samples.length)]
+export const useRandom = <E>(samples: E[]): E =>{
+    const [i, setI] = useState<number>(-1)
+    
+    useEffect(() =>{
+        if (!localStorage.getItem("randNum"))
+        {
+            setI(Math.floor(Math.random() * samples.length))
+            localStorage.setItem("randNum", String(i))
+        }
+            
+        return () => localStorage.clear()
+    }, [i])
+    return samples[i]
+}

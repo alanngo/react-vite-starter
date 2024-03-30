@@ -1,0 +1,1 @@
+export type ArrayEntry<E> = { idx: number, elem: E }
