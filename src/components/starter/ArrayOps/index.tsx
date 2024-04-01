@@ -1,12 +1,12 @@
 
 import Button from '../../vite/Button';
-import { usePublish } from '../../../helper/functions/hooks/events';
+import { usePublisher } from '../../../helper/functions/hooks/events';
 import { ArrayEntry } from '../../../helper/types/arrays';
 import Break from '../../Break';
 import { useState } from 'react';
 
 const ArrayOps = (): JSX.Element => {
-    const publish = usePublish()
+    const publish = usePublisher()
     const [back, setBack] = useState<string>("")
     const [front, setFront] = useState<string>("")
     const [entry, setEntry] = useState<ArrayEntry<string>>({ idx: -1, elem: "" })

@@ -1,49 +1,46 @@
 
 import Break from './components/Break'
 import ArrayOps from './components/starter/ArrayOps'
+import Counter from './components/starter/Counter'
 import Anchor from './components/vite/Anchor'
 import Button from './components/vite/Button'
 import Container from './components/vite/Container'
 import Text from './components/vite/Text'
 import { ascending, descending } from './helper/functions'
-import { useArray, useCount, useRandom} from './helper/functions/hooks'
-import { usePublish, useSubscribe } from './helper/functions/hooks/events'
+import { useArray, useRandom} from './helper/functions/hooks'
+import { usePublisher, useSubscriber } from './helper/functions/hooks/events'
 import { ArrayEntry } from './helper/types/arrays'
 
 const App = (): JSX.Element => {
-  const [count, decrement, increment, reset] = useCount()
   const { arr: foods, pushBack, pushFront, insert, remove, sort } = useArray<string>(["pizza"])
-  const publish = usePublish()
+  const publish = usePublisher()
   const random = useRandom<string>(["gryffindor", "slytherin", "ravenclaw", "hufflepuff"])
-  useSubscribe<number>("PICKLE_RICK", (data: number) => {
+  useSubscriber<number>("PICKLE_RICK", (data: number) => {
     console.log(data)
   })
 
-  useSubscribe<string>("PUSH_BACK", (data: string) =>{
+  useSubscriber<string>("PUSH_BACK", (data: string) =>{
     pushBack(data)
   })
 
-  useSubscribe<string>("PUSH_FRONT", (data: string) =>{
+  useSubscriber<string>("PUSH_FRONT", (data: string) =>{
     pushFront(data)
   })
 
-  useSubscribe<ArrayEntry<string>>("INSERT", ({idx, elem}: ArrayEntry<string>) =>{
+  useSubscriber<ArrayEntry<string>>("INSERT", ({idx, elem}: ArrayEntry<string>) =>{
     insert(idx, elem)
   })
 
-  useSubscribe<null>("SORT_ASC", () =>{
+  useSubscriber<null>("SORT_ASC", () =>{
     sort(ascending)
   })
-  useSubscribe<null>("SORT_DESC", () =>{
+  useSubscriber<null>("SORT_DESC", () =>{
     sort(descending)
   })
   return (
     <Container>
-      <h1>House: {random}</h1>
-      <Text level={1}>{count}</Text>
-      <Button onClick={() => decrement()}>-</Button>
-      <Button onClick={reset}>RESET</Button>
-      <Button onClick={() => increment()}>+</Button>
+      <Text level={1}>House: {random}</Text>
+      <Counter/>
      <Break />
       {
         foods.map((e, i) =>

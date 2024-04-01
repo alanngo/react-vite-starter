@@ -1,11 +1,18 @@
+import { useCount } from "../../../helper/functions/hooks";
+import Button from "../../vite/Button";
+import Text from "../../vite/Text";
 
-import React from 'react';
-const Counter = ():JSX.Element => 
-{
+const Counter = (): JSX.Element => {
+    const [count, decrement, increment, reset] = useCount()
+
     return (
-        <div className='Counter'>
-        <h1>Implement Counter</h1>
-        </div>
+        <>
+            <Text level={1}>{count}</Text>
+            <Button onClick={() => decrement()}>-</Button>
+            <Button onClick={reset}>RESET</Button>
+            <Button onClick={() => increment()}>+</Button>
+        </>
+
     )
 }
 export default Counter;

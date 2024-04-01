@@ -96,6 +96,25 @@ const rand = useRandom<string>(["msi", "asus", "gigabyte", "asrock"])
 ```
 
 
+### usePublisher
+
+```tsx
+const publish = usePublisher()
+
+...
+<button onClick = {() =>publish<E>("EVENT_NAME", DATA)}>click me</button>
+
+```
+
+### useSubscriber
+
+```ts
+useSubscriber<E>("EVENT_NAME", (eventData:E) =>{
+  // perform action on eventData
+})
+
+```
+
 ### Regular Functions
 Located in ``src/helper/functions``
 
