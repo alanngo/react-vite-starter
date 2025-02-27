@@ -65,7 +65,7 @@ Located in ``src/components/``
 
 #### useCount
 ```ts
-const [count, increment, decrement, reset] = useCount() // default value is 0
+const {count, increment, decrement, reset} = useCount() // default value is 0
 ```
 
 #### useToggle
