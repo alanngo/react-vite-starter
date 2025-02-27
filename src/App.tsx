@@ -1,5 +1,6 @@
 
 import Break from './components/Break'
+import RenderIf from './components/RenderIf'
 import ArrayOps from './components/starter/ArrayOps'
 import Counter from './components/starter/Counter'
 import Anchor from './components/vite/Anchor'
@@ -55,6 +56,7 @@ const App = (): JSX.Element => {
 
       <Break />
       <Anchor href='https://www.google.com'>Google</Anchor>
+
     </Container>
   )
 }
