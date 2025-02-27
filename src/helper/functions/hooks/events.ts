@@ -6,9 +6,10 @@ const publish = <E>(name: string, payload: E): boolean => window.dispatchEvent(n
 
 export const usePublisher = (): Publish => publish
 
+type EventPayload<E> = {detail: E}
 export const useSubscriber = <E>(name: string, callback: ParamAction<E>): void => {
     useEffect(() => {
-        const handleEvent = (e: any) => {
+        const handleEvent = (e: EventPayload<E>): void => {
             callback(e.detail)
         }
         window.addEventListener(name, handleEvent)

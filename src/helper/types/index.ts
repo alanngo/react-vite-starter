@@ -9,3 +9,6 @@ export type Counter = {
     reset: Action
 }
 export type SortCriteria<E> = (a: E, b: E) => number
+
+// html related
+

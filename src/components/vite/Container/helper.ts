@@ -1,1 +1,1 @@
-export type ContainerProps = { children: any }
+export type ContainerProps = { children: unknown }

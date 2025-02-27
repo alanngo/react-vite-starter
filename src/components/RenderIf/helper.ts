@@ -1,6 +1,6 @@
 //helper goes here for RenderIf
 export type RenderIfProps= {
-    condition: any
-    children: any
-    fallback?: any
+    condition: unknown
+    children: unknown
+    fallback?: unknown
 }

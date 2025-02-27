@@ -45,7 +45,7 @@ export const useRandom = <E>(samples: E[]): E => {
             localStorage.setItem("randNum", String(i))
         }
 
-        return () => localStorage.clear()
+        return () => localStorage.removeItem("randNum")
     }, [i, samples])
     return samples[i]
 }
