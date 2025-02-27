@@ -1,6 +1,7 @@
+
 //helper goes here for RenderIf
 export type RenderIfProps= {
     condition: unknown
-    children: unknown
-    fallback?: unknown
+    children: JSX.Element
+    fallback?: JSX.Element
 }
