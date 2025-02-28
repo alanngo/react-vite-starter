@@ -1,18 +1,17 @@
 import { useEffect } from "react"
-import { ParamAction } from "../../types"
 
 type Publish = <E>(name: string, payload: E) => boolean
 const publish = <E>(name: string, payload: E): boolean => window.dispatchEvent(new CustomEvent(name, { detail: payload }))
 
 export const usePublisher = (): Publish => publish
 
-type EventPayload<E> = {detail: E}
-export const useSubscriber = <E>(name: string, callback: ParamAction<E>): void => {
+export const useSubscriber = <E>(name: string, callback: (e: E) => void): void => {
     useEffect(() => {
-        const handleEvent = (e: EventPayload<E>): void => {
+        const handleEvent = (e: CustomEvent) =>{
             callback(e.detail)
         }
-        window.addEventListener(name, handleEvent)
-        return () => window.removeEventListener(name, handleEvent)
+
+        window.addEventListener(name, handleEvent as EventListener)
+        return () => window.removeEventListener(name, handleEvent as EventListener)
     }, [name, callback])
 }

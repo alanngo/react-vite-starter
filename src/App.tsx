@@ -8,12 +8,12 @@ import Button from './components/vite/Button'
 import Container from './components/vite/Container'
 import Text from './components/vite/Text'
 import { ascending, descending } from './helper/functions'
-import { useArray, useRandom} from './helper/functions/hooks'
+import { useArray, useRandom, useToggle} from './helper/functions/hooks'
 import { usePublisher, useSubscriber } from './helper/functions/hooks/events'
 import { ArrayEntry } from './helper/types/arrays'
 
 const App = (): JSX.Element => {
-  const { arr: foods, pushBack, pushFront, insert, remove, sort } = useArray<string>(["pizza"])
+  const { arr: foods, pushBack, pushFront, insert, setElem, remove, sort } = useArray<string>(["pizza"])
   const publish = usePublisher()
   const random = useRandom<string>(["gryffindor", "slytherin", "ravenclaw", "hufflepuff"])
   useSubscriber<number>("PICKLE_RICK", (data: number) => {
@@ -32,12 +32,17 @@ const App = (): JSX.Element => {
     insert(idx, elem)
   })
 
+  useSubscriber<ArrayEntry<string>>("SET_ELEM", ({idx, elem}: ArrayEntry<string>) =>{
+    setElem(idx, elem)
+  })
+
   useSubscriber<null>("SORT_ASC", () =>{
     sort(ascending)
   })
   useSubscriber<null>("SORT_DESC", () =>{
     sort(descending)
   })
+  const [emoji, toggleEmoji] = useToggle()
   return (
     <Container>
       <Text level={1}>House: {random}</Text>
@@ -56,6 +61,12 @@ const App = (): JSX.Element => {
 
       <Break />
       <Anchor href='https://www.google.com'>Google</Anchor>
+
+      <Break num={2}/>
+      <RenderIf condition={emoji}>
+        <Text level={2}> ⚡</Text>
+      </RenderIf>
+      <Button onClick={toggleEmoji}>Toggle Emoji</Button>
 
     </Container>
   )

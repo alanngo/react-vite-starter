@@ -24,12 +24,12 @@ const ArrayOps = (): JSX.Element => {
             <label>index </label><input
                 type="number"
                 min={0}
-                onChange={(e) => setEntry({ ...entry, idx: Number(e.target.value) })}/>
+                onChange={(e) => setEntry({ ...entry, idx: Number(e.target.value) })} />
             <Break />
             <label>element </label> <input onChange={(e) => setEntry({ ...entry, elem: e.target.value })} />
             <Break />
-            <Button onClick={() => publish<ArrayEntry<string>>("INSERT", entry ||"BLANK")}>Insert</Button>
-
+            <Button onClick={() => publish<ArrayEntry<string>>("INSERT", entry || "BLANK")}>Insert</Button>
+            <Button onClick={() => publish<ArrayEntry<string>>("SET_ELEM", entry || "BLANK")}>Set Element</Button>
             <Break num={2} />
 
             <Button onClick={() => publish<null>("SORT_ASC", null)}>sort ascending</Button>
