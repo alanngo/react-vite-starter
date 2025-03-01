@@ -1,22 +1,21 @@
 
+import RenderIf from '../../RenderIf';
 import { TextProps } from './helper';
 import "./style.css"
-const Text = ({level, ...props}: TextProps): JSX.Element => {
-    switch (level) {
-        case 1:
-            return <h1 {...props}>{props.children}</h1>
-        case 2:
-            return <h2 {...props}>{props.children}</h2>
-        case 3:
-            return <h3 {...props}>{props.children}</h3>
-        case 4:
-            return <h4 {...props}>{props.children}</h4>
-        case 5:
-            return <h5 {...props}>{props.children}</h5>
-        case 6:
-            return <h6 {...props}>{props.children}</h6>
-        default:
-            return <p {...props}>{props.children}</p>
+const Text = ({ level, ...props }: TextProps): JSX.Element =>
+(
+    <RenderIf condition={level} fallback={<p {...props}>{props.children}</p>}>
+    {
+        {
+            "1":<h1 {...props}>{props.children}</h1>,
+            "2":<h2 {...props}>{props.children}</h2>,
+            "3":<h3 {...props}>{props.children}</h3>,
+            "4":<h4 {...props}>{props.children}</h4>,
+            "5":<h5 {...props}>{props.children}</h5>,
+            "6":<h6 {...props}>{props.children}</h6>,
+        }[String(level)]
     }
-}
+    </RenderIf>
+)
+
 export default Text;
