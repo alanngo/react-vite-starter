@@ -9,12 +9,11 @@ import Container from './components/vite/Container'
 import Text from './components/vite/Text'
 import { ascending, descending } from './helper/functions'
 import { useArray, useRandom, useToggle} from './helper/functions/hooks'
-import { usePublisher, useSubscriber } from './helper/functions/hooks/events'
+import { useSubscriber } from './helper/functions/hooks/events'
 import { ArrayEntry } from './helper/types/arrays'
 
 const App = (): JSX.Element => {
   const { arr: foods, pushBack, pushFront, insert, setElem, remove, sort } = useArray<string>(["pizza"])
-  const publish = usePublisher()
   const random = useRandom<string>(["gryffindor", "slytherin", "ravenclaw", "hufflepuff"])
   useSubscriber<number>("PICKLE_RICK", (data: number) => {
     console.log(data)
@@ -57,16 +56,13 @@ const App = (): JSX.Element => {
 
       <ArrayOps/>
       <Break />
-      <Button onClick={() => publish<number>("PICKLE_RICK", 123456)}>Publish Event</Button>
 
       <Break />
       <Anchor href='https://www.google.com'>Google</Anchor>
 
       <Break num={2}/>
       <RenderIf condition={emoji}>
-        <Text level={2}> ⚡</Text>
-        <h2>meep</h2>
-        
+        <Text level={2}> ⚡</Text>        
       </RenderIf>
       <Button onClick={toggleEmoji}>Toggle Emoji</Button>
 

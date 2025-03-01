@@ -1,9 +1,8 @@
-import { Optional, OptionalAny, OptionalArray, OptionalBoolean, OptionalNumber, OptionalObject, OptionalString } from "../types/optional";
+import { Optional,  OptionalArray, OptionalBoolean, OptionalNumber, OptionalObject, OptionalString } from "../types/optional";
 import { BLANK, EMPTY_ARRAY, EMPTY_OBJ } from "../constants";
 
 // optionals 
 export const optional = <T>(arg: Optional<T>, fallback: T): T => arg || fallback
-export const optionalAny = (arg: OptionalAny, fallback: unknown): unknown => optional(arg, fallback)
 export const optionalObject = (arg: OptionalObject, fallback: object = EMPTY_OBJ): object => optional<object>(arg, fallback)
 export const optionalArray = <T>(arg: OptionalArray<T>, fallback: T[] = EMPTY_ARRAY): T[] => optional<T[]>(arg, fallback)
 export const optionalNumber = (arg: OptionalNumber, fallback: number = 1): number => optional<number>(arg, fallback)
