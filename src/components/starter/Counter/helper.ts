@@ -1,3 +1,3 @@
 //helper goes here for Counter
-export type CounterProps = {}
+export type CounterProps = object
 export {}

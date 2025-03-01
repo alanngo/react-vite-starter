@@ -1,1 +1,1 @@
-export type ContainerProps = { children: unknown }
+export type ContainerProps = { children: JSX.Element }
