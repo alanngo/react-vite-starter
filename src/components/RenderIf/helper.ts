@@ -4,5 +4,5 @@ import { Children } from "../../helper/types"
 export type RenderIfProps= {
     condition: unknown
     children: Children
-    fallback?: JSX.Element
+    fallback?: Children
 }
