@@ -21,18 +21,27 @@ export const useToggle = (initValue: boolean = false): [boolean, Action] => {
 
 export const useArray = <E>(initial: E[] = []) => {
     const [arr, setArr] = useState<E[]>(initial)
+
     return {
         arr,
-        pushBack: (e: E) => setArr([...arr, e]),
-        pushFront: (e: E) => setArr([e, ...arr]),
-        insert: (idx: number, e: E) => setArr([...arr.slice(0, idx), e, ...arr.slice(idx)]),
-        popBack: () => setArr(arr.slice(0, arr.length - 1)),
-        popFront: () => setArr(arr.slice(1)),
-        remove: (idx: number) => setArr(arr.filter((_, i) => i !== idx)),
-        setElem: (idx: number, elem: E) => setArr(arr.map((e, i) => (idx === i ? elem : e))),
+        pushBack: (e: E) => setArr((prev: E[]) =>
+            ([...prev, e])),
+        pushFront: (e: E) => setArr((prev: E[]) =>
+            ([e, ...prev])),
+        insert: (idx: number, e: E) => setArr((prev: E[]) =>
+            ([...prev.slice(0, idx), e, ...prev.slice(idx)])),
+        popBack: () => setArr((prev: E[]) =>
+            (prev.slice(0, prev.length - 1))),
+        popFront: () => setArr((prev: E[]) =>
+            (prev.slice(1))),
+        remove: (idx: number) => setArr((prev: E[]) =>
+            (prev.filter((_, i) => i !== idx))),
+        setElem: (idx: number, elem: E) => setArr((prev: E[]) =>
+            (prev.map((e, i) => (idx === i ? elem : e)))),
+        sort: (cb: SortCriteria<E>) => setArr((prev: E[]) =>
+            ([...prev].sort(cb))),
         clear: () => setArr([]),
         reset: () => setArr(initial),
-        sort: (cb: SortCriteria<E>) => setArr([...arr].sort(cb))
     }
 }
 
@@ -46,6 +55,6 @@ export const useRandom = <E>(samples: E[]): E => {
         }
 
         return () => localStorage.removeItem("randNum")
-    }, [i, samples])
+    }, [i, samples.length])
     return samples[i]
 }
