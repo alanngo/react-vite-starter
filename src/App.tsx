@@ -65,6 +65,8 @@ const App = (): JSX.Element => {
       <Break num={2}/>
       <RenderIf condition={emoji}>
         <Text level={2}> ⚡</Text>
+        <h2>meep</h2>
+        
       </RenderIf>
       <Button onClick={toggleEmoji}>Toggle Emoji</Button>
 

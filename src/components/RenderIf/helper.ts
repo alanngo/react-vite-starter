@@ -1,8 +1,8 @@
-import { Optional } from "../../helper/types/optional"
+import { Children } from "../../helper/types"
 
 //helper goes here for RenderIf
 export type RenderIfProps= {
     condition: unknown
-    children: Optional<JSX.Element | string | number>
+    children: Children
     fallback?: JSX.Element
 }
