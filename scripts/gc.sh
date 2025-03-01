@@ -12,5 +12,5 @@ const $COMP = ():JSX.Element =>
 }
 export default $COMP;" >> "src/components/$COMP/index.tsx"
 echo "//helper goes here for $COMP
-export type" $COMP"Props = {}
+export type" $COMP"Props = object
 export {}">> "src/components/$COMP/helper.ts"
