@@ -21,10 +21,10 @@ const Home = (): JSX.Element => {
             {
                 routes.filter((r) => (r.path !== "/*")).map((route, i) =>
                 (
-                    <Button key={i} onClick={() => { navigate(route.path) }}>
+                    <Button key={i} 
+                    onClick={() => { navigate(route.path) }}>
                         {route.path.replace("/", "")}
                     </Button>
-                    
                 ))
             }
 
