@@ -10,8 +10,8 @@
     "preview": "vite preview",
     "test": "vitest",
     "clean": "rm -rf node_modules package-lock.json && npm install",
-    "gc": "bash scripts/gc.sh $1",
-    "gp": "bash scripts/gp.sh $1"
+    "gc": "bash scripts/generate.sh components",
+    "gp": "bash scripts/generate.sh pages"
   },
   "dependencies": {
     "react": "^18.2.0",
