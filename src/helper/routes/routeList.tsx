@@ -1,6 +1,6 @@
 import Home from "../../pages/starter/Home";
 import RandomEmoji from "../../pages/starter/RandomEmoji";
-import TodoList from "../../pages/TodoList";
+import TodoList from "../../pages/starter/TodoList";
 
 export const routes =
     [

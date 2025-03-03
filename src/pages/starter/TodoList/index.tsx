@@ -1,10 +1,10 @@
-import ArrayOps from "../../components/starter/ArrayOps";
-import Anchor from "../../components/vite/Anchor";
-import Button from "../../components/vite/Button";
-import { ascending, descending } from "../../helper/functions";
-import { useArray } from "../../helper/functions/hooks";
-import { useSubscriber } from "../../helper/functions/hooks/events";
-import { ArrayEntry } from "../../helper/types/arrays";
+import ArrayOps from "../../../components/starter/ArrayOps";
+import Anchor from "../../../components/vite/Anchor";
+import Button from "../../../components/vite/Button";
+import { ascending, descending } from "../../../helper/functions";
+import { useArray } from "../../../helper/functions/hooks";
+import { useSubscriber } from "../../../helper/functions/hooks/events";
+import { ArrayEntry } from "../../../helper/types/arrays";
 
 const TodoList = (): JSX.Element => {
     const { arr: todos, pushBack, pushFront, insert, setElem, remove, clear, sort } = useArray<string>(["Make Todo List"])
