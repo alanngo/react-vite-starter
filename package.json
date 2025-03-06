@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "test": "vitest",
     "clean": "rm -rf node_modules package-lock.json && npm install",
+    "sync":"git pull origin master && npm run clean",
     "gc": "bash scripts/generate.sh components",
     "gp": "bash scripts/generate.sh pages"
   },
